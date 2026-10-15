@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hà Giang with Ri Ri</title>
+<meta name="description" content="Plan a trip to Hà Giang, northern Vietnam, with Ri Ri: the Loop, rice terraces, markets, food and homestays.">
+<meta property="og:title" content="Hà Giang with Ri Ri">
+<meta property="og:description" content="Plan a trip to Hà Giang, northern Vietnam, with Ri Ri: the Loop, rice terraces, markets, food and homestays.">
+<meta property="og:image" content="ri-ri.png">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="styles.css">
+<script src="_ds_bundle.js"></script>
+<style>
+html { scroll-behavior: smooth; }
+body { margin: 0; text-wrap: pretty; background: radial-gradient(1200px 720px at 82% -160px, color-mix(in srgb, var(--color-accent-900) 75%, transparent), transparent 60%), radial-gradient(1100px 800px at -10% 100%, color-mix(in srgb, black 30%, transparent), transparent 55%), var(--color-bg); }
+a { color: var(--color-accent-300); text-decoration: none; }
+a:hover { color: var(--color-accent-200); }
+@keyframes hg-ride { from { transform: translateX(-180px); } to { transform: translateX(calc(100vw + 40px)); } }
+@keyframes hg-bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-1.5px); } }
+@keyframes hg-spin { to { transform: rotate(360deg); } }
+@keyframes hg-dust { 0% { opacity: 0.5; transform: translateX(0) scale(0.6); } 100% { opacity: 0; transform: translateX(-22px) scale(1.4); } }
+[data-m="burger"], [data-m="menu"] { display: none !important; }
+@media (max-width: 860px) {
+  [data-m="navlink"] { display: none !important; }
+  [data-m="burger"] { display: inline-flex !important; }
+  [data-m="menu"] { display: grid !important; }
+  [data-m="hero-fig"] { aspect-ratio: 4 / 5 !important; min-height: 0 !important; max-height: 74vh; }
+  [data-m="hero-logo"] { justify-items: start !important; }
+  [data-m="sec"] { padding-top: 64px !important; padding-bottom: 32px !important; }
+  [data-m="band"] { margin-top: 72px !important; padding: 56px 0 44px !important; }
+  .btn, .input { min-height: 44px !important; }
+  #plan .tag { min-height: 44px !important; padding-inline: 14px !important; }
+  header .btn { flex: 1 1 auto; justify-content: center; }
+}
+@media (prefers-reduced-motion: reduce) { .hg-scooter, .hg-scooter * { animation: none !important; } }
+</style>
+</helmet>
+
+<nav class="nav" style="padding-inline: clamp(20px, 5vw, 72px); position: sticky; top: 0; z-index: 10; backdrop-filter: blur(12px); background: color-mix(in srgb, var(--color-bg) 80%, transparent);">
+  <a href="index.html" class="nav-brand" aria-label="Ri Ri, Hà Giang" style="display: flex; align-items: center; gap: 12px; color: var(--color-text);">
+    <svg height="30" viewBox="84 38 116 72" aria-hidden="true" style="display: block; overflow: visible;">
+      <g font-family="var(--font-heading)" font-weight="500" font-size="72" fill="var(--color-neutral-100)" text-anchor="middle"><text x="104" y="108">r</text><text x="164" y="108">r</text></g>
+      <rect x="124" y="69" width="8" height="39" rx="1" fill="var(--color-neutral-100)"></rect>
+      <rect x="184" y="69" width="8" height="39" rx="1" fill="var(--color-neutral-100)"></rect>
+      <circle cx="128" cy="55" r="13" fill="var(--color-accent)" opacity="0.2"></circle>
+      <circle cx="128" cy="55" r="6" fill="var(--color-accent)"></circle>
+      <circle cx="188" cy="55" r="13" fill="var(--color-accent)" opacity="0.2"></circle>
+      <circle cx="188" cy="55" r="6" fill="var(--color-accent)"></circle>
+    </svg>
+    <span data-m="navlink" style="font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-accent-300); white-space: nowrap;">Hà Giang</span>
+  </a>
+  <a href="#places" data-m="navlink">Places</a>
+  <a href="#trips" data-m="navlink">Trips</a>
+  <a href="#seasons" data-m="navlink">When to go</a>
+  <a href="#food" data-m="navlink">Food</a>
+  <a href="ha-giang-loop.html" data-m="navlink">The Loop</a>
+  <a href="#plan" class="btn btn-primary" style="white-space: nowrap;">Plan a trip</a>
+  <button type="button" data-m="burger" class="btn btn-ghost btn-icon" aria-label="Menu" aria-expanded="{{ menuOpen }}" onClick="{{ toggleMenu }}" style="min-width: 44px; min-height: 44px; align-items: center; justify-content: center; padding: 0;">
+    <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 6h14M3 10h14M3 14h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path></svg>
+  </button>
+</nav>
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div data-m="menu" style="position: sticky; top: 56px; z-index: 9; gap: 4px; padding: 8px clamp(20px, 5vw, 72px) 16px; background: color-mix(in srgb, var(--color-bg) 94%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--color-neutral-800);">
+    <a href="#places" onClick="{{ closeMenu }}" style="display: flex; align-items: center; min-height: 48px; font-size: 17px; color: var(--color-text);">Places</a>
+    <a href="#trips" onClick="{{ closeMenu }}" style="display: flex; align-items: center; min-height: 48px; font-size: 17px; color: var(--color-text);">Trips</a>
+    <a href="#seasons" onClick="{{ closeMenu }}" style="display: flex; align-items: center; min-height: 48px; font-size: 17px; color: var(--color-text);">When to go</a>
+    <a href="#food" onClick="{{ closeMenu }}" style="display: flex; align-items: center; min-height: 48px; font-size: 17px; color: var(--color-text);">Food</a>
+    <a href="ha-giang-loop.html" style="display: flex; align-items: center; min-height: 48px; font-size: 17px; color: var(--color-text);">The Loop</a>
+  </div>
+</sc-if>
+
+<header data-screen-label="Hero" style="position: relative; max-width: 1344px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 72px);">
+  <figure data-m="hero-fig" class="lighten" style="margin: 0; position: relative; width: 100%; aspect-ratio: 1920 / 884; min-height: 420px; border-radius: var(--radius-lg, 12px); overflow: hidden;">
+    <img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1c/S%C3%B4ng_Nho_Qu%E1%BA%BF.jpg/1280px-S%C3%B4ng_Nho_Qu%E1%BA%BF.jpg" alt="The Nho Quế river winding through a limestone gorge" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+    {{ heroVideo }}
+    <div style="position: absolute; inset: 0; background: linear-gradient(to top, var(--color-bg) 0%, color-mix(in srgb, var(--color-bg) 55%, transparent) 45%, transparent 80%);"></div>
+  </figure>
+  <div style="position: relative; margin-top: clamp(-220px, -14vw, -80px); display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 32px 48px;">
+  <div style="display: grid; gap: 20px; max-width: 780px; flex: 1 1 min(100%, 480px);">
+    <span style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-accent-300);">Northern Vietnam, on the Chinese border</span>
+    <h1 style="font-family: var(--font-heading); font-weight: 500; font-size: clamp(40px, 6.4vw, 84px); line-height: 1.08; letter-spacing: -0.015em; margin: 0;">Hà Giang, made easy.</h1>
+    <p style="font-size: 17px; line-height: 28px; margin: 0; max-width: 58ch; color: var(--color-text);">Mountain passes, terraced valleys, Sunday markets and homestay dinners. Ri Ri plans trips around the province she has called home for over two years.</p>
+    <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px;">
+      <a href="#plan" class="btn btn-primary">Plan my trip</a>
+      <a href="ha-giang-loop.html" class="btn btn-ghost">Ride the Loop</a>
+    </div>
+    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+      <sc-for list="{{ quick }}" as="q" hint-placeholder-count="3">
+        <a href="#plan" onClick="{{ q.go }}" class="btn btn-secondary" style="white-space: nowrap;">{{ q.label }}</a>
+      </sc-for>
+    </div>
+  </div>
+  <div data-m="hero-logo" aria-label="Ri Ri, Hà Giang" style="display: grid; justify-items: center; gap: 14px; padding-bottom: 8px;">
+    <svg viewBox="84 38 116 72" aria-hidden="true" style="display: block; overflow: visible; height: clamp(72px, 9vw, 120px); width: auto; aspect-ratio: 116 / 72;">
+      <g font-family="var(--font-heading)" font-weight="500" font-size="72" fill="var(--color-neutral-100)" text-anchor="middle"><text x="104" y="108">r</text><text x="164" y="108">r</text></g>
+      <rect x="124" y="69" width="8" height="39" rx="1" fill="var(--color-neutral-100)"></rect>
+      <rect x="184" y="69" width="8" height="39" rx="1" fill="var(--color-neutral-100)"></rect>
+      <circle cx="128" cy="55" r="13" fill="var(--color-accent)" opacity="0.2"></circle>
+      <circle cx="128" cy="55" r="6" fill="var(--color-accent)"></circle>
+      <circle cx="188" cy="55" r="13" fill="var(--color-accent)" opacity="0.2"></circle>
+      <circle cx="188" cy="55" r="6" fill="var(--color-accent)"></circle>
+    </svg>
+    <span style="font-size: 12px; font-weight: 500; letter-spacing: 0.22em; text-transform: uppercase; color: var(--color-accent-300); white-space: nowrap;">Hà Giang</span>
+  </div>
+  </div>
+</header>
+
+<section data-m="band" aria-label="Hà Giang in numbers" style="position: relative; overflow: hidden; margin-top: 112px; padding: 70px 0; background: radial-gradient(900px 420px at 85% -40%, color-mix(in srgb, var(--color-section-glow) 70%, transparent), transparent 64%), var(--color-section);">
+  {{ scooter }}
+  <div style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 72px); display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr)); gap: 40px 28px;">
+    <div style="display: grid; gap: 10px;"><p style="font-size: clamp(36px, 3.6vw, 52px); font-weight: 500; line-height: 1; margin: 0; color: var(--color-text);">300 km</p><p style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; margin: 0; color: color-mix(in srgb, var(--color-text) 70%, transparent);">North of Hà Nội</p></div>
+    <div style="display: grid; gap: 10px;"><p style="font-size: clamp(36px, 3.6vw, 52px); font-weight: 500; line-height: 1; margin: 0; color: var(--color-text);">2,000 m+</p><p style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; margin: 0; color: color-mix(in srgb, var(--color-text) 70%, transparent);">Peaks on the plateau</p></div>
+    <div style="display: grid; gap: 10px;"><p style="font-size: clamp(36px, 3.6vw, 52px); font-weight: 500; line-height: 1; margin: 0; color: var(--color-text);">UNESCO</p><p style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; margin: 0; color: color-mix(in srgb, var(--color-text) 70%, transparent);">Global Geopark</p></div>
+    <div style="display: grid; gap: 10px;"><p style="font-size: clamp(36px, 3.6vw, 52px); font-weight: 500; line-height: 1; margin: 0; color: var(--color-text);">2 yrs+</p><p style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; margin: 0; color: color-mix(in srgb, var(--color-text) 70%, transparent);">Ri Ri on these roads</p></div>
+  </div>
+</section>
+
+<main style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 72px);">
+
+  <section id="places" data-m="sec" data-screen-label="Places" style="padding: 112px 0 56px; display: grid; gap: 28px;">
+    <div style="display: grid; gap: 14px; max-width: 640px;">
+      <span style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-accent);">Places</span>
+      <h2 style="font-family: var(--font-heading); font-weight: 500; font-size: clamp(32px, 4vw, 48px); line-height: 1.1; letter-spacing: -0.012em; margin: 0;">Where we go in Hà Giang</h2>
+      <p style="font-size: 15.5px; line-height: 28px; margin: 0; color: color-mix(in srgb, var(--color-text) 78%, transparent);">The famous loop covers the karst plateau in the north-east. The west of the province is quieter: terraced rice valleys and villages most visitors never reach.</p>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 20px;">
+      <sc-for list="{{ places }}" as="p" hint-placeholder-count="6">
+        <article style="display: grid; gap: 12px; align-content: start;">
+          <figure class="lighten" style="margin: 0; aspect-ratio: 4 / 3; border-radius: var(--radius-md, 8px); overflow: hidden;">
+            <img src="{{ p.img }}" alt="{{ p.alt }}" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+          </figure>
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;"><span class="tag tag-neutral">{{ p.area }}</span></div>
+          <h3 style="font-family: var(--font-heading); font-weight: 500; font-size: 22px; line-height: 1.25; margin: 0;">{{ p.name }}</h3>
+          <p style="font-size: 15px; line-height: 26px; margin: 0; color: color-mix(in srgb, var(--color-text) 75%, transparent);">{{ p.copy }}</p>
+        </article>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="trips" data-m="sec" data-screen-label="Trips" style="padding: 56px 0; display: grid; gap: 28px;">
+    <div style="display: grid; gap: 14px; max-width: 640px;">
+      <span style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-accent);">Trips</span>
+      <h2 style="font-family: var(--font-heading); font-weight: 500; font-size: clamp(32px, 4vw, 48px); line-height: 1.1; letter-spacing: -0.012em; margin: 0;">Ways to see the province</h2>
+    </div>
+    <a href="ha-giang-loop.html" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 0; border-radius: var(--radius-lg, 12px); overflow: hidden; background: var(--color-surface, var(--color-neutral-900)); box-shadow: var(--shadow-md); color: var(--color-text);" style-hover="box-shadow: var(--shadow-lg);">
+      <figure class="lighten" style="margin: 0; min-height: 280px;"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Flycam_view_of_road_at_Ma_Pi_Leng_pass.png?width=1200" alt="Switchback road at Mã Pí Lèng Pass" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; display: block;"></figure>
+      <div style="display: grid; gap: 14px; align-content: center; padding: clamp(24px, 4vw, 48px);">
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;"><span class="tag tag-accent">Signature trip</span><span class="tag tag-neutral">3 to 4 days</span></div>
+        <h3 style="font-family: var(--font-heading); font-weight: 500; font-size: clamp(26px, 3vw, 36px); line-height: 1.15; margin: 0;">The Hà Giang Loop</h3>
+        <p style="font-size: 15.5px; line-height: 28px; margin: 0; color: color-mix(in srgb, var(--color-text) 78%, transparent);">350 km by motorbike over Mã Pí Lèng, up to Lũng Cú and down to the Nho Quế river. Ride pillion with a local driver or take your own bike.</p>
+        <span style="font-size: 15px; font-weight: 500; color: var(--color-accent-300);">See the route and tours →</span>
+      </div>
+    </a>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 16px;">
+      <sc-for list="{{ trips }}" as="t" hint-placeholder-count="3">
+        <article class="card" style="display: grid; gap: 12px; align-content: start;">
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;"><span class="tag tag-neutral">{{ t.length }}</span></div>
+          <h3 class="card-title" style="margin: 0;">{{ t.name }}</h3>
+          <p class="card-body" style="margin: 0;">{{ t.copy }}</p>
+          <a href="#plan" class="btn btn-secondary" style="justify-self: start; margin-top: 8px;">Ask about this</a>
+        </article>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="seasons" data-m="sec" data-screen-label="When to go" style="padding: 56px 0; display: grid; gap: 28px;">
+    <div style="display: grid; gap: 14px; max-width: 640px;">
+      <span style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-accent);">When to go</span>
+      <h2 style="font-family: var(--font-heading); font-weight: 500; font-size: clamp(32px, 4vw, 48px); line-height: 1.1; letter-spacing: -0.012em; margin: 0;">Every season looks different up here</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 28px;">
+      <sc-for list="{{ seasons }}" as="s" hint-placeholder-count="4">
+        <div style="display: grid; gap: 8px; align-content: start; padding-top: 20px; border-top: 1px solid var(--color-neutral-800);">
+          <p style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; margin: 0; color: var(--color-accent-300);">{{ s.months }}</p>
+          <h3 style="font-family: var(--font-heading); font-weight: 500; font-size: 20px; line-height: 1.3; margin: 0;">{{ s.title }}</h3>
+          <p style="font-size: 15px; line-height: 26px; margin: 0; color: color-mix(in srgb, var(--color-text) 75%, transparent);">{{ s.copy }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="different" data-m="sec" data-screen-label="Why Hà Giang" style="padding: 56px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 32px clamp(32px, 6vw, 96px); align-items: start;">
+    <div style="display: grid; gap: 14px; max-width: 520px;">
+      <span style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-accent);">Why Hà Giang</span>
+      <h2 style="font-family: var(--font-heading); font-weight: 500; font-size: clamp(32px, 4vw, 48px); line-height: 1.1; letter-spacing: -0.012em; margin: 0;">A side of Vietnam most travellers never see</h2>
+      <p style="font-size: 15.5px; line-height: 28px; margin: 0; color: color-mix(in srgb, var(--color-text) 78%, transparent);">Hà Giang is Vietnam at its wildest and most welcoming: huge mountain views, living traditions and roads made for adventure. It is the trip people still talk about years later.</p>
+      <figure class="lighten" style="margin: 8px 0 0; aspect-ratio: 4 / 3; border-radius: var(--radius-md, 8px); overflow: hidden;"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Mapileng_mountains.jpg?width=1200" alt="Layered limestone mountains around Mã Pí Lèng" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; display: block;"></figure>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 24px 28px;">
+      <div style="display: grid; gap: 8px; align-content: start; padding-top: 20px; border-top: 1px solid var(--color-neutral-800);"><h3 style="font-family: var(--font-heading); font-weight: 500; font-size: 20px; line-height: 1.3; margin: 0;">Landscapes like nowhere else</h3><p style="font-size: 15px; line-height: 26px; margin: 0; color: color-mix(in srgb, var(--color-text) 75%, transparent);">The Đồng Văn Karst Plateau is a sea of limestone peaks, deep canyons and terraced valleys, and a UNESCO Global Geopark.</p></div>
+      <div style="display: grid; gap: 8px; align-content: start; padding-top: 20px; border-top: 1px solid var(--color-neutral-800);"><h3 style="font-family: var(--font-heading); font-weight: 500; font-size: 20px; line-height: 1.3; margin: 0;">Cultures you can be part of</h3><p style="font-size: 15px; line-height: 26px; margin: 0; color: color-mix(in srgb, var(--color-text) 75%, transparent);">Hmong, Dao, Tày, Lô Lô and other communities welcome you into their villages, markets and homes.</p></div>
+      <div style="display: grid; gap: 8px; align-content: start; padding-top: 20px; border-top: 1px solid var(--color-neutral-800);"><h3 style="font-family: var(--font-heading); font-weight: 500; font-size: 20px; line-height: 1.3; margin: 0;">Crisp mountain air</h3><p style="font-size: 15px; line-height: 26px; margin: 0; color: color-mix(in srgb, var(--color-text) 75%, transparent);">Up above 1,000 metres the air is fresh and cool. Winter evenings are perfect for hotpot and corn wine by the fire.</p></div>
+      <div style="display: grid; gap: 8px; align-content: start; padding-top: 20px; border-top: 1px solid var(--color-neutral-800);"><h3 style="font-family: var(--font-heading); font-weight: 500; font-size: 20px; line-height: 1.3; margin: 0;">A road that is the adventure</h3><p style="font-size: 15px; line-height: 26px; margin: 0; color: color-mix(in srgb, var(--color-text) 75%, transparent);">Every pass, switchback and canyon edge is a highlight. Here the journey really is the best part.</p></div>
+      <div style="display: grid; gap: 8px; align-content: start; padding-top: 20px; border-top: 1px solid var(--color-neutral-800);"><h3 style="font-family: var(--font-heading); font-weight: 500; font-size: 20px; line-height: 1.3; margin: 0;">Room to breathe</h3><p style="font-size: 15px; line-height: 26px; margin: 0; color: color-mix(in srgb, var(--color-text) 75%, transparent);">Cosy homestays, open roads and villages where a hello turns into an invitation for tea.</p></div>
+      <div style="display: grid; gap: 8px; align-content: start; padding-top: 20px; border-top: 1px solid var(--color-neutral-800);"><h3 style="font-family: var(--font-heading); font-weight: 500; font-size: 20px; line-height: 1.3; margin: 0;">The top of the country</h3><p style="font-size: 15px; line-height: 26px; margin: 0; color: color-mix(in srgb, var(--color-text) 75%, transparent);">Stand at Lũng Cú, Vietnam’s northernmost point, with views across the mountains to China.</p></div>
+    </div>
+  </section>
+
+  <section id="food" data-m="sec" data-screen-label="Food" style="padding: 56px 0; display: grid; gap: 28px;">
+    <div style="display: grid; gap: 14px; max-width: 640px;">
+      <span style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-accent);">Food</span>
+      <h2 style="font-family: var(--font-heading); font-weight: 500; font-size: clamp(32px, 4vw, 48px); line-height: 1.1; letter-spacing: -0.012em; margin: 0;">Ten places to eat in Hà Giang</h2>
+      <p style="font-size: 15.5px; line-height: 28px; margin: 0; color: color-mix(in srgb, var(--color-text) 78%, transparent);">Most are in Đồng Văn and Mèo Vạc, where the loop stops for the night. Order the local dishes: sour phở, thắng cố, five-colour sticky rice and corn wine.</p>
+    </div>
+    <ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 440px), 1fr)); column-gap: clamp(32px, 6vw, 80px);">
+      <sc-for list="{{ food }}" as="f" hint-placeholder-count="10">
+        <li style="display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 4px 12px; padding: 18px 0; border-top: 1px solid var(--color-neutral-800);">
+          <span style="grid-row: span 2; font-size: 22px; font-weight: 500; line-height: 1.2; color: var(--color-accent); font-feature-settings: 'tnum' 1;">{{ f.n }}</span>
+          <div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px;"><h3 style="font-family: var(--font-heading); font-weight: 500; font-size: 19px; line-height: 1.3; margin: 0;">{{ f.name }}</h3><span style="font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-accent-300);">{{ f.town }}</span></div>
+          <p style="font-size: 15px; line-height: 25px; margin: 0; color: color-mix(in srgb, var(--color-text) 75%, transparent);">{{ f.copy }}</p>
+        </li>
+      </sc-for>
+    </ol>
+  </section>
+
+  <section id="ri-ri" data-m="sec" data-screen-label="Meet Ri Ri" style="padding: 56px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 40px clamp(32px, 6vw, 96px); align-items: center;">
+    <figure style="margin: 0; aspect-ratio: 4 / 5; max-width: 460px; border-radius: var(--radius-md, 8px); overflow: hidden;"><img src="ri-ri.png" alt="Ri Ri looking out over terraced valleys in northern Vietnam" loading="lazy" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; display: block;"></figure>
+    <div style="display: grid; gap: 16px; max-width: 560px;">
+      <span style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-accent);">Meet Ri Ri</span>
+      <h2 style="font-family: var(--font-heading); font-weight: 500; font-size: clamp(32px, 4vw, 48px); line-height: 1.1; letter-spacing: -0.012em; margin: 0;">She was a tourist here once, too.</h2>
+      <p style="font-size: 15.5px; line-height: 28px; margin: 0; color: color-mix(in srgb, var(--color-text) 78%, transparent);">Ri Ri has lived in Vietnam for over two years, most of it in Hà Giang. She knows the spots worth stopping for because she once needed someone to show her. She has friends up and down the province and speaks semi-fluent Vietnamese.</p>
+      <p style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; margin: 0;"><span style="font-size: 22px; font-weight: 500; color: var(--color-text);">84K</span><span style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 64%, transparent);">followers</span><span style="width: 16px;"></span><span style="font-size: 22px; font-weight: 500; color: var(--color-text);">610.8K</span><span style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 64%, transparent);">likes on TikTok</span></p>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 4px;">
+        <a href="https://www.tiktok.com/@sails_fly" target="_blank" rel="noopener" class="btn btn-secondary">Follow on TikTok</a>
+        <a href="#tiktok" class="btn btn-ghost">Watch her videos</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="tiktok" data-m="sec" data-screen-label="TikTok" style="padding: 56px 0; display: grid; gap: 28px;">
+    <div style="display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 20px;">
+      <div style="display: grid; gap: 14px; max-width: 620px;">
+        <span style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-accent);">On the road with</span>
+        <h2 style="font-family: var(--font-heading); font-weight: 500; font-size: clamp(32px, 4vw, 48px); line-height: 1.1; letter-spacing: -0.012em; margin: 0;">Ri Ri on TikTok</h2>
+        <p style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; margin: 0;"><span style="font-size: 22px; font-weight: 500; color: var(--color-text); font-feature-settings: 'tnum' 1;">84K</span><span style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 64%, transparent);">followers</span><span style="width: 16px;"></span><span style="font-size: 22px; font-weight: 500; color: var(--color-text); font-feature-settings: 'tnum' 1;">610.8K</span><span style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 64%, transparent);">likes</span></p>
+        <p style="font-size: 15.5px; line-height: 28px; margin: 0; color: color-mix(in srgb, var(--color-text) 78%, transparent);">Passes, homestays, river boats and the karaoke nobody asked for. Tap any video to play.</p>
+      </div>
+      <a href="https://www.tiktok.com/@sails_fly" target="_blank" rel="noopener" class="btn btn-secondary">Follow @sails_fly</a>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); gap: 16px;">
+      <div style="position: relative; aspect-ratio: 9 / 16; border-radius: var(--radius-md, 8px); overflow: hidden; background: var(--color-neutral-900); box-shadow: var(--shadow-md);">
+        <iframe src="https://www.tiktok.com/player/v1/7612249676007378184?description=1&amp;music_info=0&amp;rel=0" title="TikTok video by Ri Ri" loading="lazy" allow="encrypted-media; fullscreen; picture-in-picture" allowfullscreen="true" style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0;"></iframe>
+      </div>
+      <div style="position: relative; aspect-ratio: 9 / 16; border-radius: var(--radius-md, 8px); overflow: hidden; background: var(--color-neutral-900); box-shadow: var(--shadow-md);">
+        <iframe src="https://www.tiktok.com/player/v1/7559513668782705928?description=1&amp;music_info=0&amp;rel=0" title="TikTok video by Ri Ri" loading="lazy" allow="encrypted-media; fullscreen; picture-in-picture" allowfullscreen="true" style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0;"></iframe>
+      </div>
+      <div style="position: relative; aspect-ratio: 9 / 16; border-radius: var(--radius-md, 8px); overflow: hidden; background: var(--color-neutral-900); box-shadow: var(--shadow-md);">
+        <iframe src="https://www.tiktok.com/player/v1/7694947478067596596?description=1&amp;music_info=0&amp;rel=0" title="TikTok video by Ri Ri" loading="lazy" allow="encrypted-media; fullscreen; picture-in-picture" allowfullscreen="true" style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0;"></iframe>
+      </div>
+      <div style="position: relative; aspect-ratio: 9 / 16; border-radius: var(--radius-md, 8px); overflow: hidden; background: var(--color-neutral-900); box-shadow: var(--shadow-md);">
+        <iframe src="https://www.tiktok.com/player/v1/7691261893746412852?description=1&amp;music_info=0&amp;rel=0" title="TikTok video by Ri Ri" loading="lazy" allow="encrypted-media; fullscreen; picture-in-picture" allowfullscreen="true" style="position: absolute; inset: 0; width: 100%; height: 100%; border: 0;"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" data-m="sec" data-screen-label="How it works" style="padding: 56px 0; display: grid; gap: 28px;">
+    <div style="display: grid; gap: 14px; max-width: 640px;">
+      <span style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-accent);">How it works</span>
+      <h2 style="font-family: var(--font-heading); font-weight: 500; font-size: clamp(32px, 4vw, 48px); line-height: 1.1; letter-spacing: -0.012em; margin: 0;">From message to mountains</h2>
+    </div>
+    <ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 28px;">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+        <li style="display: grid; gap: 10px; align-content: start;">
+          <span style="font-size: 32px; font-weight: 500; line-height: 1; color: var(--color-accent);">{{ s.n }}</span>
+          <h3 style="font-family: var(--font-heading); font-weight: 500; font-size: 18px; line-height: 1.3; margin: 0;">{{ s.title }}</h3>
+          <p style="font-size: 15px; line-height: 26px; margin: 0; color: color-mix(in srgb, var(--color-text) 75%, transparent);">{{ s.copy }}</p>
+        </li>
+      </sc-for>
+    </ol>
+  </section>
+
+  <section id="plan" data-m="sec" data-screen-label="Plan a trip" style="padding: 56px 0 84px; border-top: 1px solid var(--color-neutral-800); display: grid; gap: 16px;">
+    <h2 style="font-family: var(--font-heading); font-weight: 500; font-size: clamp(28px, 3.4vw, 40px); line-height: 1.15; margin: 0;">Plan a trip with Ri Ri</h2>
+    <p style="font-size: 15.5px; line-height: 28px; margin: 0; max-width: 58ch; color: color-mix(in srgb, var(--color-text) 78%, transparent);">Tell her roughly when you're coming and what you're after. She'll reply with an itinerary and open dates.</p>
+    <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+      <form onSubmit="{{ submit }}" style="display: grid; gap: 16px; max-width: 680px; margin-top: 8px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr)); gap: 12px;">
+          <label class="field" style="display: grid; gap: 6px;"><span>Name</span><input class="input" type="text" required="true" style="min-height: 40px; font-size: 16px;"></label>
+          <label class="field" style="display: grid; gap: 6px;"><span>Email</span><input class="input" type="email" required="true" placeholder="you@example.com" style="min-height: 40px; font-size: 16px;"></label>
+          <label class="field" style="display: grid; gap: 6px;"><span>Travel month</span><input class="input" type="month" style="min-height: 40px; font-size: 16px;"></label>
+          <label class="field" style="display: grid; gap: 6px;"><span>Travellers</span><input class="input" type="number" min="1" value="2" style="min-height: 40px; font-size: 16px;"></label>
+        </div>
+        <div style="display: grid; gap: 8px;">
+          <span style="font-size: 13px; color: color-mix(in srgb, var(--color-text) 72%, transparent);">Interested in</span>
+          <div style="display: flex; flex-wrap: wrap; gap: 8px;">
+            <sc-for list="{{ interests }}" as="i" hint-placeholder-count="5">
+              <button type="button" onClick="{{ i.toggle }}" aria-pressed="{{ i.on }}" class="{{ i.cls }}" style="min-height: 36px; cursor: pointer; font: inherit;">{{ i.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+        <label class="field" style="display: grid; gap: 6px;"><span>Anything else?</span><textarea class="input" rows="3" style="font-size: 16px; resize: vertical; font-family: inherit;"></textarea></label>
+        <button type="submit" class="btn btn-primary" style="justify-self: start; min-height: 40px;">Send to Ri Ri</button>
+      </form>
+    </sc-if>
+    <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+      <p style="font-size: 15.5px; margin: 8px 0 0; color: var(--color-accent-300);">Thanks. Ri Ri will reply within a day.</p>
+    </sc-if>
+  </section>
+
+  <footer style="padding: 56px 0; display: grid; gap: 8px; font-size: 13px; line-height: 22px; color: color-mix(in srgb, var(--color-text) 55%, transparent);">
+    <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+      <svg height="36" viewBox="84 38 116 72" aria-hidden="true" style="display: block; overflow: visible;">
+        <g font-family="var(--font-heading)" font-weight="500" font-size="72" fill="var(--color-neutral-100)" text-anchor="middle"><text x="104" y="108">r</text><text x="164" y="108">r</text></g>
+        <rect x="124" y="69" width="8" height="39" rx="1" fill="var(--color-neutral-100)"></rect>
+        <rect x="184" y="69" width="8" height="39" rx="1" fill="var(--color-neutral-100)"></rect>
+        <circle cx="128" cy="55" r="13" fill="var(--color-accent)" opacity="0.2"></circle>
+        <circle cx="128" cy="55" r="6" fill="var(--color-accent)"></circle>
+        <circle cx="188" cy="55" r="13" fill="var(--color-accent)" opacity="0.2"></circle>
+        <circle cx="188" cy="55" r="6" fill="var(--color-accent)"></circle>
+      </svg>
+      <span style="font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-accent-300); white-space: nowrap;">Hà Giang</span>
+    </div>
+    <div style="display: flex; flex-wrap: wrap; gap: 8px 20px;"><a href="ha-giang-loop.html">The Hà Giang Loop</a><a href="#places">Places</a><a href="#seasons">When to go</a><a href="#food">Food</a><a href="https://www.tiktok.com/@sails_fly" target="_blank" rel="noopener">TikTok</a></div>
+    <span>Hero footage by Hoangbuifilms on Pixabay. Photographs from Wikimedia Commons, used under their Creative Commons licences.</span>
+  </footer>
+</main>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { sent: false, menuOpen: false, picked: {} };
+  componentDidMount() {
+    setTimeout(() => this.setupScroll(), 60);
+  }
+  componentDidUpdate() { this.scanReveal && this.scanReveal(); }
+  componentWillUnmount() { this._io && this._io.disconnect(); this._onScroll && window.removeEventListener('scroll', this._onScroll); }
+  setupScroll() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) return;
+    const sel = ['[aria-label="Hà Giang in numbers"] > div > div', 'main > section > div:first-child', '#places article', '#trips > a', '#trips article', '#seasons > div:last-child > div', '#different > div:first-child > *', '#different > div:last-child > div', '#ri-ri > *', '#food li', '#tiktok > div:first-child', '#tiktok > div:last-child > div', '#how li', '#plan > *', 'main > footer > *'].join(',');
+    this._seen = new WeakSet();
+    this._io = new IntersectionObserver(es => es.forEach(en => {
+      if (!en.isIntersecting) return;
+      const el = en.target; this._io.unobserve(el);
+      el.style.opacity = '1'; el.style.transform = 'none';
+      setTimeout(() => { el.style.transition = ''; el.style.willChange = ''; }, 1400);
+    }), { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    this.scanReveal = () => document.querySelectorAll(sel).forEach(el => {
+      if (this._seen.has(el)) return; this._seen.add(el);
+      if (el.getBoundingClientRect().top < window.innerHeight * 0.94) return;
+      const sibs = Array.from(el.parentElement.children).filter(c => c.matches(sel));
+      const d = Math.min(Math.max(0, sibs.indexOf(el)), 5) * 90;
+      el.style.opacity = '0'; el.style.transform = 'translateY(24px)'; el.style.willChange = 'opacity, transform';
+      el.style.transition = `opacity 0.8s cubic-bezier(.2,.7,.2,1) ${d}ms, transform 0.9s cubic-bezier(.2,.7,.2,1) ${d}ms`;
+      this._io.observe(el);
+    });
+    this.scanReveal();
+    const hero = document.querySelector('header[data-screen-label="Hero"] > figure');
+    if (hero) {
+      this._onScroll = () => {
+        if (this._raf) return;
+        this._raf = requestAnimationFrame(() => {
+          this._raf = 0; const y = Math.min(window.scrollY, 900);
+          hero.style.transform = `translateY(${y * 0.18}px) scale(${1 + y * 0.00012})`;
+          hero.style.opacity = String(Math.max(0.35, 1 - y / 1100));
+        });
+      };
+      window.addEventListener('scroll', this._onScroll, { passive: true });
+    }
+  }
+  heroVideo() {
+    if (this._hero) return this._hero;
+    const reduce = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this._hero = reduce ? null : React.createElement('video', { ref: el => { if (el && !el._hgInit) { el._hgInit = true; el.muted = true; el.setAttribute('muted', ''); el.setAttribute('playsinline', ''); const p = () => el.play().catch(() => {}); p(); el.addEventListener('canplay', p, { once: true }); } }, src: 'https://cdn.pixabay.com/video/2026/07/17/364537_large.mp4', muted: true, playsInline: true, loop: true, autoPlay: true, preload: 'auto', 'aria-hidden': 'true', style: { position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' } });
+    return this._hero;
+  }
+  scooter() {
+    if (this._scooter) return this._scooter;
+    const e = React.createElement;
+    const ink = 'var(--color-neutral-200)', acc = 'var(--color-accent)';
+    const wheel = (cx) => e('g', { key: 'w' + cx },
+      e('circle', { cx, cy: 52, r: 9, fill: 'none', stroke: ink, strokeWidth: 3 }),
+      e('g', { style: { transformBox: 'fill-box', transformOrigin: 'center', animation: 'hg-spin 0.35s linear infinite' } },
+        e('circle', { cx, cy: 52, r: 6.5, fill: 'none', stroke: 'transparent' }),
+        e('line', { x1: cx - 6, y1: 52, x2: cx + 6, y2: 52, stroke: ink, strokeWidth: 1.2 }),
+        e('line', { x1: cx, y1: 46, x2: cx, y2: 58, stroke: ink, strokeWidth: 1.2 })),
+      e('circle', { cx, cy: 52, r: 1.8, fill: ink }));
+    const puff = (d, y) => e('circle', { key: 'p' + d, cx: 8, cy: y, r: 2.5, fill: 'var(--color-neutral-400)', style: { transformBox: 'fill-box', transformOrigin: 'center', animation: `hg-dust 0.9s ease-out ${d}s infinite` } });
+    const svg = e('svg', { viewBox: '0 0 120 64', width: 120, height: 64, 'aria-hidden': 'true', style: { display: 'block', overflow: 'visible' } },
+      puff(0, 50), puff(0.3, 47), puff(0.6, 52), wheel(22), wheel(96),
+      e('g', { style: { animation: 'hg-bob 0.4s ease-in-out infinite' } },
+        e('path', { d: 'M22 52 L40 46 L58 46 L66 38', fill: 'none', stroke: ink, strokeWidth: 3, strokeLinejoin: 'round', strokeLinecap: 'round' }),
+        e('path', { d: 'M28 34 Q24 44 36 46 L56 46 Q50 36 46 34 Z', fill: ink }),
+        e('path', { d: 'M28 32 L52 32', stroke: 'var(--color-neutral-600)', strokeWidth: 4, strokeLinecap: 'round' }),
+        e('path', { d: 'M66 38 L78 22 Q80 40 70 46 Z', fill: ink }),
+        e('path', { d: 'M78 22 L96 52', stroke: ink, strokeWidth: 3, strokeLinecap: 'round' }),
+        e('path', { d: 'M76 18 L84 16', stroke: ink, strokeWidth: 3, strokeLinecap: 'round' }),
+        e('circle', { cx: 85, cy: 22, r: 2.2, fill: acc }),
+        e('path', { d: 'M18 30 L30 30', stroke: ink, strokeWidth: 2, strokeLinecap: 'round' }),
+        e('rect', { x: 14, y: 22, width: 14, height: 9, rx: 2, fill: 'var(--color-neutral-500)' }),
+        e('path', { d: 'M48 30 L58 12', stroke: ink, strokeWidth: 5, strokeLinecap: 'round' }),
+        e('path', { d: 'M56 16 L76 18', stroke: ink, strokeWidth: 3, strokeLinecap: 'round' }),
+        e('path', { d: 'M48 30 L62 34 L60 44', fill: 'none', stroke: ink, strokeWidth: 3.5, strokeLinecap: 'round', strokeLinejoin: 'round' }),
+        e('circle', { cx: 60, cy: 7, r: 5, fill: acc }),
+        e('path', { d: 'M34 30 L42 12', stroke: 'var(--color-neutral-300)', strokeWidth: 5, strokeLinecap: 'round' }),
+        e('path', { d: 'M41 16 L52 22', stroke: 'var(--color-neutral-300)', strokeWidth: 3, strokeLinecap: 'round' }),
+        e('path', { d: 'M34 30 L46 34 L44 44', fill: 'none', stroke: 'var(--color-neutral-300)', strokeWidth: 3.5, strokeLinecap: 'round', strokeLinejoin: 'round' }),
+        e('rect', { x: 30, y: 12, width: 8, height: 13, rx: 2, fill: 'var(--color-accent-700)' }),
+        e('circle', { cx: 44, cy: 7, r: 5, fill: 'var(--color-neutral-300)' })));
+    const rider = (delay) => e('div', { key: delay, className: 'hg-scooter', 'aria-hidden': 'true', style: { position: 'absolute', top: 2, left: 0, pointerEvents: 'none', animation: `hg-ride 14s linear ${delay}s infinite`, willChange: 'transform' } }, svg);
+    this._scooter = e(React.Fragment, null, rider(0), rider(-7));
+    return this._scooter;
+  }
+  renderVals() {
+    const W = 'https://thumb.wikimedia.org/wikipedia/commons/thumb/';
+    const interestList = ['Bus', 'Bike rental', 'Custom tour', 'The Loop', 'Rice terraces', 'Trekking', 'Markets', 'Homestays', 'Photography'];
+    const picked = this.state.picked;
+    return {
+      heroVideo: this.heroVideo(), scooter: this.scooter(),
+      menuOpen: this.state.menuOpen, toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })), closeMenu: () => this.setState({ menuOpen: false }),
+      sent: this.state.sent, notSent: !this.state.sent,
+      submit: e => { e.preventDefault(); this.setState({ sent: true }); },
+      quick: [['I need a bus', 'Bus'], ['I want a bike rental', 'Bike rental'], ['I want a customized tour', 'Custom tour']].map(([label, key]) => ({ label, go: () => this.setState(s => ({ picked: { ...s.picked, [key]: true } })) })),
+      interests: interestList.map(l => ({ label: l, on: !!picked[l], cls: picked[l] ? 'tag tag-accent' : 'tag tag-outline', toggle: () => this.setState(s => ({ picked: { ...s.picked, [l]: !s.picked[l] } })) })),
+      places: [
+        { name: 'Mã Pí Lèng and the Nho Quế', area: 'Loop · Mèo Vạc', copy: 'The cliff road above Vietnam’s deepest canyon, and a boat through it on the jade-green river below.', img: W + '1/1c/S%C3%B4ng_Nho_Qu%E1%BA%BF.jpg/1280px-S%C3%B4ng_Nho_Qu%E1%BA%BF.jpg', alt: 'The Nho Quế river in its gorge' },
+        { name: 'Lũng Cú', area: 'Loop · Đồng Văn', copy: 'The flag tower at Vietnam’s northernmost point, looking out over Lô Lô villages to the Chinese border.', img: W + '5/51/Lung_Cu_flag_tower_of_Ha_Giang_in_2014_03.jpg/1280px-Lung_Cu_flag_tower_of_Ha_Giang_in_2014_03.jpg', alt: 'Lũng Cú flag tower' },
+        { name: 'The Hmong King’s Palace', area: 'Loop · Sà Phìn', copy: 'A carved stone-and-timber mansion built for the Vương family in a quiet valley below the pass.', img: W + '3/3c/Ha_Giang_Hmong_King_palace_in_2014_01.jpg/1280px-Ha_Giang_Hmong_King_palace_in_2014_01.jpg', alt: 'Courtyard of the Hmong King palace' },
+        { name: 'Mèo Vạc Sunday market', area: 'Loop · Mèo Vạc', copy: 'Hmong, Dao and Lô Lô families come in from the hills to trade buffalo, cloth and corn wine.', img: W + '5/54/M%C3%A8o_V%E1%BA%A1c_market_-_02.jpg/1280px-M%C3%A8o_V%E1%BA%A1c_market_-_02.jpg', alt: 'Stalls at Mèo Vạc market' },
+        { name: 'Du Già', area: 'Loop · Yên Minh', copy: 'A small valley village with a waterfall swim, rice paddies and some of the best homestays on the route.', img: W + '0/0b/Du_Gi%C3%A0.jpg/1280px-Du_Gi%C3%A0.jpg', alt: 'Du Già valley' },
+        { name: 'Hoàng Su Phì terraces', area: 'West Hà Giang', copy: 'Rice terraces stacked up whole mountainsides, with Dao and Nùng villages and almost no other travellers.', img: W + '8/85/Ru%E1%BB%99ng_b%E1%BA%ADc_thang_B%E1%BA%A3n_Ph%C3%B9ng_1_-_NKS.jpg/1280px-Ru%E1%BB%99ng_b%E1%BA%ADc_thang_B%E1%BA%A3n_Ph%C3%B9ng_1_-_NKS.jpg', alt: 'Rice terraces at Bản Phùng, Hoàng Su Phì' }
+      ],
+      trips: [
+        { name: 'Hoàng Su Phì terraces', length: '2 to 3 days', copy: 'The quiet west of the province: village walks, terrace viewpoints and nights with Dao families.' },
+        { name: 'Custom trips', length: 'Any length', copy: 'Tell Ri Ri what you want to see and how you like to travel. She builds the route, bikes and stays around you.' },
+        { name: 'Getting there from Hà Nội', length: '6 to 7 hours', copy: 'Help booking the sleeper bus or a private transfer, timed so you arrive rested for the ride.' }
+      ],
+      seasons: [
+        { months: 'Jan to Mar', title: 'Peach and plum blossom', copy: 'Cold, clear mornings and pink blossom in every village around Tết.' },
+        { months: 'Apr to Jun', title: 'Water in the terraces', copy: 'Fields are flooded for planting and the valleys turn into mirrors.' },
+        { months: 'Sep to early Oct', title: 'Golden rice', copy: 'Harvest season. Hoàng Su Phì is at its most beautiful.' },
+        { months: 'Oct to Dec', title: 'Buckwheat flowers', copy: 'Pink and white flowers cover the plateau. The driest, clearest riding weather.' }
+      ],
+      food: [
+        { n: '01', name: 'Quang Dũng', town: 'Đồng Văn', copy: 'Family-run for over twenty years. Go for the giò lụa pork sausage and five-colour sticky rice.' },
+        { n: '02', name: 'Bống Restaurant', town: 'Đồng Văn', copy: 'Regional cooking with a cult following for its sour phở.' },
+        { n: '03', name: 'Tiến Nhị', town: 'Đồng Văn', copy: 'The breakfast phở stop. Always packed, always fast.' },
+        { n: '04', name: 'Thắng Dền Oanh Thành', town: 'Đồng Văn', copy: 'Warm glutinous rice balls in ginger syrup, made with Yên Minh rice flour. Dessert after the market.' },
+        { n: '05', name: 'Green Karst', town: 'Đồng Văn', copy: 'Cheap, friendly café with good vegetarian dishes and a menu that suits tired riders.' },
+        { n: '06', name: 'Âu Việt', town: 'Đồng Văn', copy: 'Big menu of Vietnamese mountain dishes, open from morning until late.' },
+        { n: '07', name: 'Phiên Coffee, Beer & Wine', town: 'Đồng Văn', copy: 'The evening drink in the old quarter, for coffee, cocktails or a nightcap.' },
+        { n: '08', name: 'Thanh Phương', town: 'Mèo Vạc', copy: 'Simple family kitchen and the best Vietnamese meal in Mèo Vạc. Order the braised fish.' },
+        { n: '09', name: 'Mr. Hùng Italian & Wine Bar', town: 'Mèo Vạc', copy: 'Wood-fired pizza and homemade pasta for when you need a break from rice.' },
+        { n: '10', name: 'Ngói Đỏ', town: 'Hà Giang City', copy: 'Red-tiled restaurant serving highland dishes. A good first or last dinner of the trip.' }
+      ],
+      steps: [
+        { n: '01', title: 'Send a message', copy: 'Use the form below with rough dates and what you’re interested in.' },
+        { n: '02', title: 'Get a plan', copy: 'Ri Ri replies with a suggested route, where you’ll stay and the price.' },
+        { n: '03', title: 'Shape it together', copy: 'Swap stops, add days, change bikes. Nothing is fixed until you’re happy.' },
+        { n: '04', title: 'Arrive and ride', copy: 'She meets you in Hà Giang City and the trip starts from there.' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
