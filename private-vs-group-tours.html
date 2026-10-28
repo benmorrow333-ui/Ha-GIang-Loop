@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Self-drive or group tour on the Hà Giang Loop · Sailsfly</title>
+<link rel="stylesheet" href="styles.css">
+<script src="_ds_bundle.js"></script>
+<style>
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body { margin: 0; text-wrap: pretty; background: radial-gradient(1200px 720px at 82% -160px, color-mix(in srgb, var(--color-accent-900) 75%, transparent), transparent 60%), radial-gradient(1100px 800px at -10% 100%, color-mix(in srgb, black 30%, transparent), transparent 55%), var(--color-bg); }
+a { color: var(--color-accent-300); text-decoration: none; }
+a:hover { color: var(--color-accent-200); }
+[data-m="burger"], [data-m="menu"] { display: none !important; }
+@media (max-width: 860px) {
+  [data-m="navlink"] { display: none !important; }
+  [data-m="burger"] { display: inline-flex !important; }
+  [data-m="menu"] { display: grid !important; }
+  [data-m="sec"] { padding-top: 56px !important; padding-bottom: 32px !important; }
+  .btn { min-height: 44px !important; }
+}
+</style>
+</helmet>
+
+<nav class="nav" style="padding-inline: clamp(20px, 5vw, 72px); position: sticky; top: 0; z-index: 10; backdrop-filter: blur(12px); background: color-mix(in srgb, var(--color-bg) 80%, transparent);">
+  <a href="index.html" class="nav-brand" aria-label="Sailsfly, Hà Giang home" style="display: flex; align-items: center; gap: 12px; color: var(--color-text);">
+    <span aria-hidden="true" style="display: inline-flex; align-items: baseline; font-family: var(--font-heading); font-weight: 500; font-size: 24px; line-height: 1; letter-spacing: -0.02em; color: var(--color-neutral-100); white-space: nowrap;">sa<span style="position: relative; display: inline-block;">ı<span style="position: absolute; left: 50%; top: 0.03em; width: 0.15em; height: 0.15em; margin-left: -0.075em; border-radius: 50%; background: var(--color-accent); box-shadow: 0 0 0 0.09em color-mix(in srgb, var(--color-accent) 22%, transparent), 0 0 0.4em var(--color-accent);"></span></span>lsfly</span>
+    <span data-m="navlink" style="font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-accent-300); white-space: nowrap;">Hà Giang</span>
+  </a>
+  <a href="index.html" data-m="navlink">Home</a>
+  <a href="trips.html" data-m="navlink">Trips</a>
+  <a href="motorbikes.html" data-m="navlink">Motorbikes</a>
+  <a href="transportation.html" data-m="navlink">Transportation</a>
+  <a href="info.html" data-m="navlink" aria-current="page" style="color: var(--color-text);">Info</a>
+  <a href="index.html#plan" class="btn btn-primary" style="white-space: nowrap;">Plan a trip</a>
+  <a href="https://wa.me/84384478625" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp" title="WhatsApp us: +84 38 4478625" style="display: inline-flex; align-items: center; justify-content: center; flex: none; width: 40px; height: 40px; min-width: 40px; border-radius: 50%; background: #25D366; color: #fff; box-shadow: 0 2px 8px color-mix(in srgb, black 30%, transparent);"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path></svg></a>
+  <button type="button" data-m="burger" class="btn btn-ghost btn-icon" aria-label="Menu" aria-expanded="{{ menuOpen }}" onClick="{{ toggleMenu }}" style="min-width: 44px; min-height: 44px; align-items: center; justify-content: center; padding: 0;">
+    <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 6h14M3 10h14M3 14h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path></svg>
+  </button>
+</nav>
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div data-m="menu" style="position: sticky; top: 56px; z-index: 9; gap: 4px; padding: 8px clamp(20px, 5vw, 72px) 16px; background: color-mix(in srgb, var(--color-bg) 94%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--color-neutral-800);">
+    <a href="index.html" style="display: flex; align-items: center; min-height: 48px; font-size: 17px; color: var(--color-text);">Home</a>
+    <a href="trips.html" style="display: flex; align-items: center; min-height: 48px; font-size: 17px; color: var(--color-text);">Trips</a>
+    <a href="motorbikes.html" style="display: flex; align-items: center; min-height: 48px; font-size: 17px; color: var(--color-text);">Motorbikes</a>
+    <a href="transportation.html" style="display: flex; align-items: center; min-height: 48px; font-size: 17px; color: var(--color-text);">Transportation</a>
+    <a href="info.html" style="display: flex; align-items: center; min-height: 48px; font-size: 17px; color: var(--color-text);">Info</a>
+    <a href="index.html#plan" style="display: flex; align-items: center; min-height: 48px; font-size: 17px; color: var(--color-text);">Plan a trip</a>
+  </div>
+</sc-if>
+
+<main style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 72px);">
+  <article data-screen-label="Post" style="max-width: 760px; margin: 0 auto; display: grid; gap: 20px; padding: clamp(40px, 6vw, 80px) 0 40px;">
+    <a href="info.html#ha-giang" style="font-size: 14px; justify-self: start;">← Back to Hà Giang posts</a>
+    <span style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-accent);">Hà Giang · Planning</span>
+    <h1 style="font-family: var(--font-heading); font-weight: 500; font-size: clamp(36px, 5vw, 60px); line-height: 1.08; letter-spacing: -0.015em; margin: 0;">Private tour or group tour?</h1>
+    <p style="font-size: 18px; line-height: 30px; margin: 0; color: var(--color-text);">Both get you around the Loop with a guide. The difference is who you share the road with, and how much say you have over the plan.</p>
+    <figure class="lighten" style="margin: 12px 0 0; aspect-ratio: 16 / 9; border-radius: var(--radius-md, 8px); overflow: hidden;"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Le_col_de_Ma_Pi_Leng_(Dong_Van-Meo_Vac).jpg?width=1600" alt="Mã Pí Lèng Pass between Đồng Văn and Mèo Vạc" style="width: 100%; height: 100%; object-fit: cover; display: block;"></figure>
+  </article>
+
+  <section data-m="sec" style="max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 16px; padding: 8px 0 24px;">
+    <article class="card" style="display: grid; gap: 16px; align-content: start;"><div style="display: grid; gap: 6px;"><span class="card-kicker">Just you and your group</span><h3 class="card-title" style="margin: 0; font-size: 24px;">Private tour</h3></div><div style="display: grid; gap: 4px; align-content: start;"><h4 style="font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 500; margin: 0 0 4px; color: var(--color-accent-300);">Pros</h4><ul style="margin: 0; padding-left: 18px; display: grid; gap: 8px; font-size: 15px; line-height: 24px; color: color-mix(in srgb, var(--color-text) 78%, transparent);"><li>Your own route, pace and stops</li><li>Your guide’s attention is all yours</li><li>Great for couples, families and photographers</li><li>Easy to add extra days or special requests</li></ul></div><div style="display: grid; gap: 4px; align-content: start;"><h4 style="font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 500; margin: 0 0 4px; color: var(--color-accent-300);">Cons</h4><ul style="margin: 0; padding-left: 18px; display: grid; gap: 8px; font-size: 15px; line-height: 24px; color: color-mix(in srgb, var(--color-text) 78%, transparent);"><li>Costs more per person</li><li>Fewer chances to meet other travellers</li><li>Quieter evenings at the homestay</li></ul></div></article>
+    <article class="card" style="display: grid; gap: 16px; align-content: start;"><div style="display: grid; gap: 6px;"><span class="card-kicker">Ride with other travellers</span><h3 class="card-title" style="margin: 0; font-size: 24px;">Group tour</h3></div><div style="display: grid; gap: 4px; align-content: start;"><h4 style="font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 500; margin: 0 0 4px; color: var(--color-accent-300);">Pros</h4><ul style="margin: 0; padding-left: 18px; display: grid; gap: 8px; font-size: 15px; line-height: 24px; color: color-mix(in srgb, var(--color-text) 78%, transparent);"><li>Lower price per person</li><li>A ready-made group of new friends</li><li>Lively evenings with food, corn wine and karaoke</li><li>Everything planned and booked for you</li></ul></div><div style="display: grid; gap: 4px; align-content: start;"><h4 style="font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 500; margin: 0 0 4px; color: var(--color-accent-300);">Cons</h4><ul style="margin: 0; padding-left: 18px; display: grid; gap: 8px; font-size: 15px; line-height: 24px; color: color-mix(in srgb, var(--color-text) 78%, transparent);"><li>A fixed itinerary and schedule</li><li>You move at the group’s pace</li><li>Less time to linger at favourite spots</li></ul></div></article>
+  </section>
+
+  <article style="max-width: 760px; margin: 0 auto; display: grid; gap: 20px; padding: 24px 0 56px;">
+    <h2 style="font-family: var(--font-heading); font-weight: 500; font-size: clamp(26px, 3vw, 34px); line-height: 1.2; letter-spacing: -0.01em; margin: 24px 0 0;">Which should you choose?</h2>
+    <p style="font-size: 16.5px; line-height: 30px; margin: 0; color: color-mix(in srgb, var(--color-text) 78%, transparent);">Go private if you value flexibility, travel with family or want a slower, more personal trip. Go with a group if you are travelling solo, on a budget, or want to share the adventure with new people.</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; padding-top: 28px; border-top: 1px solid var(--color-neutral-800);">
+      <a href="trips.html" class="btn btn-primary">See all trips</a>
+      <a href="index.html#plan" class="btn btn-secondary">Plan a trip</a>
+    </div>
+  </article>
+
+  <footer style="margin-top: 24px; padding: 56px 0; border-top: 1px solid var(--color-neutral-800); display: grid; gap: 8px; font-size: 13px; line-height: 22px; color: color-mix(in srgb, var(--color-text) 55%, transparent);">
+    <div style="display: flex; flex-wrap: wrap; gap: 8px 20px;"><a href="index.html">Home</a><a href="trips.html">Trips</a><a href="motorbikes.html">Motorbikes</a><a href="transportation.html">Transportation</a><a href="info.html">Info</a><a href="index.html#plan">Plan a trip</a></div>
+    <span>Photograph from Wikimedia Commons, used under its Creative Commons licence.</span>
+  </footer>
+</main>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { menuOpen: false };
+  renderVals() {
+    return { menuOpen: this.state.menuOpen, toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })) };
+  }
+}
+</script>
+</body>
+</html>

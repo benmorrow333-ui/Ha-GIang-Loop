@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>Motorbikes · Hà Giang with Sailsfly</title>
+<link rel="stylesheet" href="styles.css">
+<script src="_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body { margin: 0; text-wrap: pretty; background: radial-gradient(1200px 720px at 82% -160px, color-mix(in srgb, var(--color-accent-900) 75%, transparent), transparent 60%), radial-gradient(1100px 800px at -10% 100%, color-mix(in srgb, black 30%, transparent), transparent 55%), var(--color-bg); }
+a { color: var(--color-accent-300); text-decoration: none; }
+a:hover { color: var(--color-accent-200); }
+[data-m="burger"], [data-m="menu"] { display: none !important; }
+@media (max-width: 1040px) {
+  [data-m="navlink"] { display: none !important; }
+  [data-m="burger"] { display: inline-flex !important; }
+  [data-m="menu"] { display: grid !important; }
+  [data-m="sec"] { padding-top: 56px !important; padding-bottom: 32px !important; }
+  .btn { min-height: 44px !important; }
+}
+</style>
+</helmet>
+
+<nav class="nav" style="padding-inline: clamp(20px, 5vw, 72px); position: sticky; top: 0; z-index: 10; backdrop-filter: blur(12px); background: color-mix(in srgb, var(--color-bg) 80%, transparent);">
+  <a href="index.html" class="nav-brand" aria-label="Sailsfly, Hà Giang home" style="display: flex; align-items: center; gap: 12px; color: var(--color-text);">
+    <span aria-hidden="true" style="display: inline-flex; align-items: baseline; font-family: var(--font-heading); font-weight: 500; font-size: 24px; line-height: 1; letter-spacing: -0.02em; color: var(--color-neutral-100); white-space: nowrap;">sa<span style="position: relative; display: inline-block;">ı<span style="position: absolute; left: 50%; top: 0.03em; width: 0.15em; height: 0.15em; margin-left: -0.075em; border-radius: 50%; background: var(--color-accent); box-shadow: 0 0 0 0.09em color-mix(in srgb, var(--color-accent) 22%, transparent), 0 0 0.4em var(--color-accent);"></span></span>lsfly</span>
+    <span data-m="navlink" style="font-size: 11px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-accent-300); white-space: nowrap;">Hà Giang</span>
+  </a>
+  <a href="index.html" data-m="navlink">Home</a>
+  <a href="trips.html" data-m="navlink">Trips</a>
+  <a href="motorbikes.html" data-m="navlink" aria-current="page" style="color: var(--color-text);">Motorbikes</a>
+  <a href="transportation.html" data-m="navlink">Transportation</a>
+  <a href="info.html" data-m="navlink">Info</a>
+  <a href="index.html#plan" class="btn btn-primary" style="white-space: nowrap;">Plan a trip</a>
+  <a href="https://wa.me/84384478625" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp" title="WhatsApp us: +84 38 4478625" style="display: inline-flex; align-items: center; justify-content: center; flex: none; width: 40px; height: 40px; min-width: 40px; border-radius: 50%; background: #25D366; color: #fff; box-shadow: 0 2px 8px color-mix(in srgb, black 30%, transparent);"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path></svg></a>
+  <button type="button" data-m="burger" class="btn btn-ghost btn-icon" aria-label="Menu" aria-expanded="{{ menuOpen }}" onClick="{{ toggleMenu }}" style="min-width: 44px; min-height: 44px; align-items: center; justify-content: center; padding: 0;">
+    <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 6h14M3 10h14M3 14h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></path></svg>
+  </button>
+</nav>
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div data-m="menu" style="position: sticky; top: 56px; z-index: 9; gap: 4px; padding: 8px clamp(20px, 5vw, 72px) 16px; background: color-mix(in srgb, var(--color-bg) 94%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid var(--color-neutral-800);">
+    <a href="index.html" style="display: flex; align-items: center; min-height: 48px; font-size: 17px; color: var(--color-text);">Home</a>
+    <a href="trips.html" style="display: flex; align-items: center; min-height: 48px; font-size: 17px; color: var(--color-text);">Trips</a>
+    <a href="motorbikes.html" style="display: flex; align-items: center; min-height: 48px; font-size: 17px; color: var(--color-text);">Motorbikes</a>
+    <a href="transportation.html" style="display: flex; align-items: center; min-height: 48px; font-size: 17px; color: var(--color-text);">Transportation</a>
+    <a href="info.html" style="display: flex; align-items: center; min-height: 48px; font-size: 17px; color: var(--color-text);">Info</a>
+    <a href="index.html#plan" style="display: flex; align-items: center; min-height: 48px; font-size: 17px; color: var(--color-text);">Plan a trip</a>
+  </div>
+</sc-if>
+
+<main style="max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 72px);">
+  <header data-screen-label="Motorbikes" style="padding: clamp(36px, 5vw, 64px) 0 12px; display: grid; gap: 12px;">
+    <span style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-accent);">Motorbikes</span>
+    <h1 style="font-family: var(--font-heading); font-weight: 500; font-size: clamp(32px, 4.4vw, 52px); line-height: 1.1; letter-spacing: -0.015em; margin: 0;">Ride the mountains yourself</h1>
+    <p style="font-size: 15.5px; line-height: 26px; margin: 0; max-width: 60ch; color: var(--color-text);">From easy scooters to big adventure bikes, pick the machine that suits your riding and your route.</p>
+  </header>
+
+  <section id="licence" data-m="sec" data-screen-label="Licence" style="padding: 24px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 16px clamp(32px, 6vw, 96px); align-items: start;">
+    <div style="display: grid; gap: 10px; max-width: 520px;">
+      <span style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-accent);">Before you ride</span>
+      <h2 style="font-family: var(--font-heading); font-weight: 500; font-size: clamp(22px, 2.4vw, 28px); line-height: 1.2; letter-spacing: -0.012em; margin: 0;">Licence requirements</h2>
+      <p style="font-size: 14.5px; line-height: 24px; margin: 0; color: color-mix(in srgb, var(--color-text) 78%, transparent);">To ride legally in Hà Giang, travellers need both of the documents below. Due to legal requirements and frequent police checks, motorbikes cannot be rented without the proper licensing.</p>
+    </div>
+    <ol style="list-style: none; margin: 0; padding: 0; display: grid; gap: 0;">
+      <li style="display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 2px 10px; padding: 12px 0; border-top: 1px solid var(--color-neutral-800);">
+        <span style="grid-row: span 2; font-size: 17px; font-weight: 500; line-height: 1.3; color: var(--color-accent); font-feature-settings: 'tnum' 1;">01</span>
+        <h3 style="font-family: var(--font-heading); font-weight: 500; font-size: 16px; line-height: 1.35; margin: 0;">Home country licence with motorcycle certification</h3>
+        <p style="font-size: 14px; line-height: 22px; margin: 0; color: color-mix(in srgb, var(--color-text) 75%, transparent);">Your full driving licence from home must include a motorcycle endorsement. A car-only licence is not enough.</p>
+      </li>
+      <li style="display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 2px 10px; padding: 12px 0; border-top: 1px solid var(--color-neutral-800);">
+        <span style="grid-row: span 2; font-size: 17px; font-weight: 500; line-height: 1.3; color: var(--color-accent); font-feature-settings: 'tnum' 1;">02</span>
+        <h3 style="font-family: var(--font-heading); font-weight: 500; font-size: 16px; line-height: 1.35; margin: 0;">International Driving Permit (1968 convention), class A</h3>
+        <p style="font-size: 14px; line-height: 22px; margin: 0; color: color-mix(in srgb, var(--color-text) 75%, transparent);">An IDP issued under the 1968 Vienna Convention, stamped for class A motorcycles. Permits issued under the 1949 convention are not accepted.</p>
+      </li>
+    </ol>
+  </section>
+
+  <section id="bikes" data-m="sec" data-screen-label="Bikes" style="padding: 48px 0 40px; display: grid; gap: 28px;">
+    <div style="display: grid; gap: 14px; max-width: 620px;">
+      <span style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-accent);">The bikes</span>
+      <h2 style="font-family: var(--font-heading); font-weight: 500; font-size: clamp(32px, 4vw, 48px); line-height: 1.1; letter-spacing: -0.012em; margin: 0;">Smallest to biggest</h2>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); gap: 16px;">
+      <sc-for list="{{ bikes }}" as="b" hint-placeholder-count="9">
+        <article class="card" style="display: grid; gap: 14px; align-content: start; padding: 0; overflow: hidden;">
+          <div style="position: relative; aspect-ratio: 4 / 3; width: 100%; overflow: hidden; background: var(--color-neutral-100);"><image-slot id="{{ b.slot }}" src="{{ b.img }}" shape="rect" fit="contain" placeholder="Drop a photo of this bike" style="position: absolute; inset: 0; width: 100%; height: 100%;"></image-slot></div>
+          <div style="display: grid; gap: 14px; padding: 4px 20px 20px;">
+            <sc-if value="{{ b.truck }}" hint-placeholder-val="{{ false }}"><div style="display: flex;"><span class="tag tag-outline">Truck support</span></div></sc-if>
+            <h3 class="card-title" style="margin: 0;">{{ b.name }}</h3>
+            <dl style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 16px; margin: 0;">
+              <div style="display: grid; gap: 2px;"><dt style="font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 60%, transparent);">Engine</dt><dd style="margin: 0; font-size: 17px; font-weight: 500; color: var(--color-text); font-feature-settings: 'tnum' 1;">{{ b.cc }}</dd></div>
+              <div style="display: grid; gap: 2px;"><dt style="font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: color-mix(in srgb, var(--color-text) 60%, transparent);">Power</dt><dd style="margin: 0; font-size: 17px; font-weight: 500; color: var(--color-text); font-feature-settings: 'tnum' 1;">{{ b.hp }}</dd></div>
+            </dl>
+            <a href="{{ b.enquire }}" class="btn btn-secondary" style="justify-self: start;">Enquire</a>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="insurance" data-m="sec" data-screen-label="Insurance" style="padding: 72px 0 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 28px clamp(32px, 6vw, 96px); align-items: start;">
+    <div style="display: grid; gap: 14px; max-width: 520px;">
+      <span style="font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-accent);">Peace of mind</span>
+      <h2 style="font-family: var(--font-heading); font-weight: 500; font-size: clamp(28px, 3.4vw, 40px); line-height: 1.15; letter-spacing: -0.012em; margin: 0;">Insurance and support</h2>
+      <p style="font-size: 15.5px; line-height: 28px; margin: 0; color: color-mix(in srgb, var(--color-text) 78%, transparent);">Insurance can be added to any bike. Ask us when you book.</p>
+    </div>
+    <div style="display: grid; gap: 0;">
+      <div style="display: grid; gap: 6px; padding: 20px 0; border-top: 1px solid var(--color-neutral-800);">
+        <h3 style="font-family: var(--font-heading); font-weight: 500; font-size: 19px; line-height: 1.3; margin: 0;">What is covered</h3>
+        <p style="font-size: 15px; line-height: 25px; margin: 0; color: color-mix(in srgb, var(--color-text) 75%, transparent);">Moderate damage, including cosmetic damage and minor repairs.</p>
+      </div>
+      <div style="display: grid; gap: 6px; padding: 20px 0; border-top: 1px solid var(--color-neutral-800);">
+        <h3 style="font-family: var(--font-heading); font-weight: 500; font-size: 19px; line-height: 1.3; margin: 0;">What is not covered</h3>
+        <p style="font-size: 15px; line-height: 25px; margin: 0; color: color-mix(in srgb, var(--color-text) 75%, transparent);">Structural damage and engine damage.</p>
+      </div>
+      <div style="display: grid; gap: 6px; padding: 20px 0; border-top: 1px solid var(--color-neutral-800);">
+        <h3 style="font-family: var(--font-heading); font-weight: 500; font-size: 19px; line-height: 1.3; margin: 0;">Truck support on large bikes</h3>
+        <p style="font-size: 15px; line-height: 25px; margin: 0; color: color-mix(in srgb, var(--color-text) 75%, transparent);">Large bikes come with pick-up truck support, so if anything goes wrong along the route, a truck comes to collect you and the bike.</p>
+      </div>
+    </div>
+  </section>
+
+  <section data-m="sec" style="padding: 56px 0; border-top: 1px solid var(--color-neutral-800); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;">
+    <h2 style="font-family: var(--font-heading); font-weight: 500; font-size: 28px; line-height: 1.2; margin: 0;">Ready to pick a bike?</h2>
+    <a href="index.html#plan" class="btn btn-primary">Ask about a rental</a>
+  </section>
+
+  <footer style="padding: 56px 0; display: grid; gap: 8px; font-size: 13px; line-height: 22px; color: color-mix(in srgb, var(--color-text) 55%, transparent);">
+    <div style="display: flex; flex-wrap: wrap; gap: 8px 20px;"><a href="index.html">Home</a><a href="trips.html">Trips</a><a href="motorbikes.html">Motorbikes</a><a href="transportation.html">Transportation</a><a href="info.html">Info</a><a href="index.html#plan">Plan a trip</a></div>
+    <span>Specifications are approximate and can vary by model year. Bike photos and specifications courtesy of Ha Giang Horsepower.</span>
+  </footer>
+</main>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { menuOpen: false };
+  withEnquire(list) { return list.map(x => ({ ...x, enquire: 'index.html?inquiry=' + encodeURIComponent('Renting motorbike') + '&choice=' + encodeURIComponent(x.name) + '#plan' })); }
+  renderVals() {
+    return {
+      menuOpen: this.state.menuOpen,
+      toggleMenu: () => this.setState(s => ({ menuOpen: !s.menuOpen })),
+      bikes: this.withEnquire([
+        { name: '50cc Semi-Automatic', slot: 'hp-bike-1', img: '', cc: '50cc', hp: '3HP', truck: false },
+        { name: 'Honda Air Blade 110', slot: 'hp-bike-2', img: 'https://localhagiangtours.com/wp-content/uploads/2025/03/6-1.png', cc: '110cc', hp: '9HP', truck: false },
+        { name: 'Yamaha PG-1', slot: 'hp-bike-3', img: 'https://hagianghorsepower.com/thumbs/602x338x2/upload/product/2026/08/26/1038850c-a254-4b65-bc46-2ee9875e8145-1787736765.png.webp', cc: '113cc', hp: '9HP', truck: true },
+        { name: 'Honda CB150X', slot: 'hp-bike-4', img: 'https://hagianghorsepower.com/thumbs/602x338x2/upload/product/2026/08/26/e88e7e4c-6c9a-4409-8126-6072851a7a06-1787735992.png.webp', cc: '149cc', hp: '15HP', truck: true },
+        { name: 'Honda Winner 150', slot: 'hp-bike-5', img: 'https://localhagiangtours.com/wp-content/uploads/2025/03/winnerx150cc.png', cc: '150cc', hp: '15HP', truck: false },
+        { name: 'Honda XR 150', slot: 'hp-bike-xr150', img: 'https://localhagiangtours.com/wp-content/uploads/2025/03/american-honda-to-introduce-xr150l-and-crf300ls-for-2023-removebg-preview.png', cc: '150cc', hp: '12HP', truck: false },
+        { name: 'Yamaha WR 155', slot: 'hp-bike-6', img: 'https://hagianghorsepower.com/thumbs/602x338x2/upload/product/2026/09/09/yamaha-wr155-2025-thuong-motor-gia-70-trieu-1-1788962466.png.webp', cc: '155cc', hp: '16.4HP', truck: true },
+        { name: 'Honda ADV 160', slot: 'hp-bike-7', img: 'https://hagianghorsepower.com/thumbs/602x338x2/upload/product/2026/09/09/product202609092026-1788962644.webp.webp', cc: '160cc', hp: '16HP', truck: true },
+        { name: 'Kawasaki KLX 230SM', slot: 'hp-bike-8', img: 'https://hagianghorsepower.com/thumbs/602x338x2/upload/product/2026/09/09/product20260909e778e5d8-1788962601.png.webp', cc: '233cc', hp: '19HP', truck: true },
+        { name: 'Yamaha XMAX 300', slot: 'hp-bike-9', img: 'https://hagianghorsepower.com/thumbs/602x338x2/upload/product/2026/08/26/e29eb045-c468-4ec5-bb2d-cbbff0eaf741-1787736330.png.webp', cc: '292cc', hp: '28HP', truck: true },
+        { name: 'KTM 390 Adventure', slot: 'hp-bike-10', img: 'https://hagianghorsepower.com/thumbs/602x338x2/upload/product/2026/05/29/img5773-1780070935.PNG.webp', cc: '389cc', hp: '44HP', truck: true },
+        { name: 'CF Moto MT450', slot: 'hp-bike-11', img: 'https://hagianghorsepower.com/thumbs/602x338x2/upload/product/2026/08/25/motorcycle2592x1925-2-1787651008.png.webp', cc: '449cc', hp: '43.6HP', truck: true },
+        { name: 'Kawasaki KLE 500 SE', slot: 'hp-bike-12', img: 'https://hagianghorsepower.com/thumbs/602x338x2/upload/product/2026/09/15/cq5damweb12801280-photoroom-1789447924.png.webp', cc: '451cc', hp: '45HP', truck: true },
+        { name: 'Honda CB500X', slot: 'hp-bike-13', img: 'https://hagianghorsepower.com/thumbs/602x338x2/upload/product/2026/08/24/cb500x-red-dynamic-1787564813.png.webp', cc: '471cc', hp: '47HP', truck: true },
+        { name: 'Honda NX500', slot: 'hp-bike-14', img: 'https://hagianghorsepower.com/thumbs/602x338x2/upload/product/2026/08/26/dfe7461a-dd9c-4e35-8df2-17231ae7f003-1787736188.png.webp', cc: '471cc', hp: '47HP', truck: true },
+        { name: 'Husqvarna 901 Norden', slot: 'hp-bike-15', img: 'https://hagianghorsepower.com/thumbs/602x338x2/upload/product/2026/09/18/c53a3e48-919c-4343-b0b7-e21003b18124-1789699899.png.webp', cc: '889cc', hp: '105HP', truck: true }
+      ])
+    };
+  }
+}
+</script>
+</body>
+</html>
